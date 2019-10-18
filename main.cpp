@@ -2,7 +2,7 @@
 
 using namespace std;
 
-///tamaño cadena iterativo
+///tamaÃ±o cadena iterativo
 int tam_cad(char cadena[] ){
     int tam=0;
     for(int i=0 ;cadena[i]!= '\0';i++){
@@ -10,7 +10,7 @@ int tam_cad(char cadena[] ){
     }
     return tam ;
 }
-///tamaño de una cadena recursivo
+///tamaÃ±o de una cadena recursivo
 int tam_cadRec(char *cadena){
     if(*cadena=='\0'){
         return 0;
@@ -44,11 +44,20 @@ void invertirRec(char *cad,char *fin){
     }
 }
 ///palindrome
-void palindrome(char *cad,char *fin){
-    while(fin>cadena){
-
+bool palindromo(char *cadena, char *fin)
+{
+    while (fin >= cadena){
+        if(fin != cadena)
+            return false ;
+        else{
+        cadena=cadena+1;
+        fin=fin-1 ;
+        return true;
+        }
     }
+
 }
+
 int main()
 {
     char cadena[]= "hola" ;
@@ -64,5 +73,8 @@ int main()
     char *fin = cadena2 + tam_cad(cadena2) - 1;
     invertirRec(cadena2, fin);
     cout << cadena2;
+    char cadena5[]="anitalavalatina";
+    char *fin = cadena5 + tam_cad(cadena5) - 1;
+    cout << palindromo(cadena5,fin);
     return 0;
 }
