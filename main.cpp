@@ -44,19 +44,30 @@ void invertirRec(char *cad,char *fin){
     }
 }
 ///palindrome
-bool palindromo(char *cadena, char *fin)
-{
-    while (fin >= cadena){
-        if(fin != cadena)
-            return false ;
+bool palindromo(char *cadena)
+{	
+	char *fin = cadena + tam_cad(cadena) - 1;
+    for(int i=0; cadena <fin ;i++){
+        if(*fin != *cadena)
+            return 0 ;
         else{
-        cadena=cadena+1;
-        fin=fin-1 ;
-        return true;
+        	return 1;
         }
     }
 
+
 }
+bool palindromeRecur( char *cadena, int x , int y=0){
+	char *fin = cadena + tam_cad(cadena) - 1;
+	if(cadena<fin){
+		if(*cadena !=*fin)
+			return 0;
+		else
+			palindromeRecur(++cadena,--x ,++y);
+			return 1;
+	}
+}
+	
 
 int main()
 {
@@ -76,5 +87,8 @@ int main()
     char cadena5[]="anitalavalatina";
     char *fin = cadena5 + tam_cad(cadena5) - 1;
     cout << palindromo(cadena5,fin);
+    cout << palindromo(cadena5);
+    cout << endl ;
+    cout << palindromeRecur(cadena5,15);
     return 0;
 }
